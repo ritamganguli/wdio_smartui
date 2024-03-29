@@ -7,9 +7,6 @@ describe('Google Search Function', () => {
     let config = {
       screenshotName: "Select-ID",
       fullPage: false, //You can make this property as true in case of Chrome browser
-      // ignoreDOM: {
-      //   xpath: ["/html/body/div[1]/div/div[1]/div/div/div/div/div[1]/div/div[1]/div/div[2]/div[1]/div/div[3]/div/div/div/div/div/div/div/div/div/div[1]/div/div"], // Ignoring elements by ID, you can ignore multiple at once
-      // },
       selectDOM: {
         xpath: ["/html/body/div[1]/div/div[1]/div/div/div/div/div[1]/div/div[1]/div/div[2]/div[1]/div/div[2]/div/div/div/div/div/div/div/div[1]"], // Ignoring elements by ID, you can ignore multiple at once
       },
