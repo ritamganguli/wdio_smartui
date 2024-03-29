@@ -1,0 +1,46 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour at the beginning of the hour
+
+jobs:
+  build:
+    runs-on: ubantu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+    env:
+      LT_USERNAME: "ritamg"
+      LT_ACCESS_KEY: "lHWNSA0QECwjeN8DoDb9U6KyXMBgAFXqlIIArkxeOTDSeEdLyG"
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Start LambdaTest Tunnel
+      id: tunnel
+      uses: ./ # Uses an action in the root directory
+      with:
+        user: "ritamg"
+        accessKey: "lHWNSA0QECwjeN8DoDb9U6KyXMBgAFXqlIIArkxeOTDSeEdLyG"
+        basicAuth: ${{ secrets.LT_BASIC_AUTH }}
+        tunnelName: "test-tunnel-${{ github.run_number }}"
+        verbose: true
+    - run: |
+        cd web_io
+        npm install selenium-webdriver 
+        npm install webdriverio
+        npm i
+        npm install
+        LT --user ritamg@lambdatest.com --key lHWNSA0QECwjeN8DoDb9U6KyXMBgAFXqlIIArkxeOTDSeEdLyG &
+        npm run single
