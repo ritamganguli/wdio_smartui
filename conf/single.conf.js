@@ -10,8 +10,8 @@ exports.config = {
       }
     ]
   ],
-  user:'shubhamr',
-  key:'dl8Y8as59i1YyGZZUeLF897aCFvIDmaKkUU1e6RgBmlgMLIIhh',
+  user:'user',
+  key:'aceesKey',
   buildName: process.env.LT_BUILD_NAME,
   specs: ["./tests/specs/single_test.js"],
   exclude: [],
