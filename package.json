@@ -5,7 +5,7 @@
   "description": "Selenium examples for WebdriverIO and Lambdatest Automate",
   "scripts": {
     "test": "npm run single && npm run local && npm run parallel",
-    "single": "./node_modules/.bin/wdio conf/single.conf.js",
+    "single": "node_modules/.bin/wdio conf/single.conf.js",
     "single:win": "node_modules\\.bin\\wdio conf\\single.conf.js",
     "single:win1": "node_modules\\.bin\\wdio conf\\browserstack.conf.js",
     "parallel": "node_modules\\.bin\\wdio conf\\parallel.conf.js",
